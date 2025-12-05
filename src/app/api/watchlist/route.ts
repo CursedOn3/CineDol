@@ -48,6 +48,22 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ message: 'Missing required fields' }, { status: 400 });
     }
 
+    // Check if item already exists
+    const existingItem = await prisma.watchlist.findFirst({
+      where: {
+        userId: session.user.id,
+        profileId,
+        tmdbId,
+        mediaType,
+      },
+    });
+
+    if (existingItem) {
+      // Item already in watchlist, return existing item
+      return NextResponse.json(existingItem, { status: 200 });
+    }
+
+    // Create new watchlist item
     const watchlistItem = await prisma.watchlist.create({
       data: {
         userId: session.user.id,
