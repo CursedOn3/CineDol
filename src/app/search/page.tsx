@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
@@ -10,7 +10,7 @@ import { tmdbService } from '@/lib/tmdb';
 import { useTranslations } from '@/i18n';
 import type { TMDBMovie, TMDBTVShow } from '@/types';
 
-export default function SearchPage() {
+function SearchContent() {
   const searchParams = useSearchParams();
   const initialQuery = searchParams.get('q') || '';
   const { t } = useTranslations();
@@ -18,9 +18,10 @@ export default function SearchPage() {
   const [results, setResults] = useState<Array<TMDBMovie | TMDBTVShow>>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [query, setQuery] = useState(initialQuery);
+  const [hasSearched, setHasSearched] = useState(false);
 
   useEffect(() => {
-    if (initialQuery) {
+    if (initialQuery && !hasSearched) {
       handleSearch(initialQuery);
     }
   }, [initialQuery]);
@@ -28,20 +29,38 @@ export default function SearchPage() {
   const handleSearch = async (searchQuery: string) => {
     if (!searchQuery.trim()) {
       setResults([]);
+      setHasSearched(false);
+      return;
+    }
+
+    // Prevent duplicate searches
+    if (query === searchQuery && hasSearched) {
       return;
     }
 
     setIsLoading(true);
     setQuery(searchQuery);
+    setHasSearched(true);
 
     try {
-      const response = await tmdbService.search(searchQuery);
-      const filteredResults = response.results.filter(
-        (item: any) => item.media_type === 'movie' || item.media_type === 'tv'
-      );
-      setResults(filteredResults);
+      const response = await fetch(`/api/search?query=${encodeURIComponent(searchQuery)}`);
+      if (!response.ok) {
+        throw new Error('Search failed');
+      }
+      
+      const data = await response.json();
+      
+      if (data && data.results) {
+        const filteredResults = data.results.filter(
+          (item: any) => item.media_type === 'movie' || item.media_type === 'tv'
+        );
+        setResults(filteredResults);
+      } else {
+        setResults([]);
+      }
     } catch (error) {
       console.error('Search error:', error);
+      setResults([]);
     } finally {
       setIsLoading(false);
     }
@@ -93,5 +112,20 @@ export default function SearchPage() {
 
       <Footer />
     </div>
+  );
+}
+
+export default function SearchPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-netflix-black">
+        <Navbar />
+        <div className="flex items-center justify-center min-h-screen">
+          <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-netflix-red" />
+        </div>
+      </div>
+    }>
+      <SearchContent />
+    </Suspense>
   );
 }

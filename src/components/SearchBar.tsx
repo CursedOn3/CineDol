@@ -14,27 +14,32 @@ export function SearchBar({ onSearch, autoFocus = false }: SearchBarProps) {
   const router = useRouter();
   const { t } = useTranslations();
   const [query, setQuery] = useState('');
-  const [debouncedQuery, setDebouncedQuery] = useState('');
 
-  // Debounce the search query
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setDebouncedQuery(query);
-    }, 500);
+  // Debounce search with useCallback to prevent re-renders
+  const debouncedSearch = useCallback(
+    (() => {
+      let timeoutId: NodeJS.Timeout;
+      return (searchQuery: string) => {
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(() => {
+          if (searchQuery.trim()) {
+            if (onSearch) {
+              onSearch(searchQuery);
+            } else {
+              router.push(`/search?q=${encodeURIComponent(searchQuery)}`);
+            }
+          }
+        }, 300);
+      };
+    })(),
+    [onSearch, router]
+  );
 
-    return () => clearTimeout(timer);
-  }, [query]);
-
-  // Trigger search when debounced query changes
-  useEffect(() => {
-    if (debouncedQuery.trim()) {
-      if (onSearch) {
-        onSearch(debouncedQuery);
-      } else {
-        router.push(`/search?q=${encodeURIComponent(debouncedQuery)}`);
-      }
-    }
-  }, [debouncedQuery, onSearch, router]);
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setQuery(value);
+    debouncedSearch(value);
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -53,7 +58,7 @@ export function SearchBar({ onSearch, autoFocus = false }: SearchBarProps) {
         <input
           type="text"
           value={query}
-          onChange={(e) => setQuery(e.target.value)}
+          onChange={handleInputChange}
           placeholder={t('search.placeholder')}
           autoFocus={autoFocus}
           className="w-full px-12 py-4 bg-netflix-darkGray border border-netflix-gray rounded-full text-white placeholder-gray-500 focus:outline-none focus:border-white transition-all duration-200"
