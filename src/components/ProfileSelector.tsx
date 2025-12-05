@@ -33,13 +33,13 @@ export function ProfileSelector({ profiles }: ProfileSelectorProps) {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4">
-      <div className="text-center">
-        <h1 className="text-4xl md:text-5xl font-bold mb-12">
+    <div className="min-h-screen flex items-center justify-center px-4 sm:px-6 py-8">
+      <div className="text-center w-full max-w-6xl">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-10 md:mb-12">
           {t('profile.whoIsWatching')}
         </h1>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6 md:gap-8 mb-8 sm:mb-10 md:mb-12">
           {profiles.map((profile, index) => (
             <motion.button
               key={profile.id}
@@ -49,13 +49,13 @@ export function ProfileSelector({ profiles }: ProfileSelectorProps) {
               className="flex flex-col items-center gap-4 group"
             >
               <div
-                className={`w-32 h-32 rounded-lg ${
+                className={`w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 rounded-lg ${
                   avatarColors[index % avatarColors.length]
-                } flex items-center justify-center text-4xl font-bold group-hover:ring-4 group-hover:ring-white transition-all duration-200`}
+                } flex items-center justify-center text-2xl sm:text-3xl md:text-4xl font-bold group-hover:ring-4 group-hover:ring-white transition-all duration-200`}
               >
                 {profile.name[0].toUpperCase()}
               </div>
-              <span className="text-lg text-gray-400 group-hover:text-white transition-colors">
+              <span className="text-sm sm:text-base md:text-lg text-gray-400 group-hover:text-white transition-colors">
                 {profile.name}
               </span>
             </motion.button>
@@ -69,9 +69,9 @@ export function ProfileSelector({ profiles }: ProfileSelectorProps) {
               onClick={() => router.push('/profiles/add')}
               className="flex flex-col items-center gap-4 group"
             >
-              <div className="w-32 h-32 rounded-lg bg-netflix-gray flex items-center justify-center group-hover:bg-netflix-lightGray transition-colors">
+              <div className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 rounded-lg bg-netflix-gray flex items-center justify-center group-hover:bg-netflix-lightGray transition-colors">
                 <svg
-                  className="w-16 h-16 text-gray-500"
+                  className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 text-gray-500"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -84,7 +84,7 @@ export function ProfileSelector({ profiles }: ProfileSelectorProps) {
                   />
                 </svg>
               </div>
-              <span className="text-lg text-gray-400 group-hover:text-white transition-colors">
+              <span className="text-sm sm:text-base md:text-lg text-gray-400 group-hover:text-white transition-colors">
                 {t('profile.addProfile')}
               </span>
             </motion.button>
@@ -93,7 +93,7 @@ export function ProfileSelector({ profiles }: ProfileSelectorProps) {
 
         <button
           onClick={() => router.push('/profiles/manage')}
-          className="text-gray-400 hover:text-white transition-colors border border-gray-600 hover:border-white px-8 py-3 rounded"
+          className="text-sm sm:text-base text-gray-400 hover:text-white transition-colors border border-gray-600 hover:border-white px-4 sm:px-6 md:px-8 py-2 sm:py-3 rounded"
         >
           {t('profile.manageProfiles')}
         </button>

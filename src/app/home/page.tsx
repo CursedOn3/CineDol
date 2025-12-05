@@ -30,7 +30,7 @@ export default async function HomePage() {
       <main>
         <HeroBanner item={heroItem} mediaType={heroMediaType} />
 
-        <div className="relative -mt-32 z-10 space-y-8 pb-16">
+        <div className="relative -mt-20 sm:-mt-24 md:-mt-32 z-10 space-y-6 sm:space-y-8 pb-12 sm:pb-16">
           <RowSlider
             title="Trending Now"
             items={trending.results}

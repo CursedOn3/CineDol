@@ -24,17 +24,17 @@ export function Footer() {
   };
 
   return (
-    <footer className="bg-netflix-black border-t border-netflix-gray py-12 px-4 md:px-8">
+    <footer className="bg-netflix-black border-t border-netflix-gray py-8 sm:py-10 md:py-12 px-4 sm:px-6 md:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Social Links */}
-        <div className="flex gap-6 mb-8">
+        <div className="flex gap-4 sm:gap-6 mb-6 sm:mb-8">
           <a
             href="https://facebook.com"
             target="_blank"
             rel="noopener noreferrer"
             className="text-gray-400 hover:text-white transition-colors"
           >
-            <FaFacebook className="text-2xl" />
+            <FaFacebook className="text-xl sm:text-2xl" />
           </a>
           <a
             href="https://twitter.com"
@@ -63,7 +63,7 @@ export function Footer() {
         </div>
 
         {/* Footer Links */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 sm:gap-8 mb-6 sm:mb-8">
           {Object.entries(footerLinks).map(([category, links]) => (
             <div key={category}>
               <h4 className="font-semibold mb-4 text-gray-400">{category}</h4>
@@ -84,9 +84,9 @@ export function Footer() {
         </div>
 
         {/* Copyright */}
-        <div className="text-center text-sm text-gray-500">
+        <div className="text-center text-xs sm:text-sm text-gray-500">
           <p>&copy; {new Date().getFullYear()} ConeDol. All rights reserved.</p>
-          <p className="mt-2">
+          <p className="mt-1 sm:mt-2">
             Data provided by <a href="https://www.themoviedb.org" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300">TMDB</a>
           </p>
         </div>

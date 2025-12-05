@@ -40,9 +40,9 @@ export default function WatchlistPage() {
     <div className="min-h-screen bg-netflix-black">
       <Navbar />
 
-      <div className="pt-24 px-4 md:px-8 pb-16">
+      <div className="pt-20 sm:pt-24 px-3 sm:px-4 md:px-8 pb-12 sm:pb-16">
         <div className="max-w-7xl mx-auto">
-          <h1 className="text-3xl md:text-4xl font-bold mb-8">{t('watchlist.title')}</h1>
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8">{t('watchlist.title')}</h1>
 
           {isLoading && (
             <div className="text-center py-16">
@@ -59,7 +59,7 @@ export default function WatchlistPage() {
           )}
 
           {!isLoading && watchlist.length > 0 && (
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-2 sm:gap-3 md:gap-4">
               {watchlist.map((item) => (
                 <MovieCard
                   key={item.id}

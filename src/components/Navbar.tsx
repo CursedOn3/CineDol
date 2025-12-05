@@ -44,15 +44,15 @@ export function Navbar() {
         isScrolled ? 'bg-netflix-black' : 'bg-gradient-to-b from-black/80 to-transparent'
       }`}
     >
-      <div className="px-4 md:px-8 py-4 flex items-center justify-between">
+      <div className="px-3 sm:px-4 md:px-8 py-3 md:py-4 flex items-center justify-between">
         {/* Logo */}
-        <div className="flex items-center gap-8">
-          <Link href="/home" className="text-netflix-red text-2xl md:text-3xl font-bold">
+        <div className="flex items-center gap-4 sm:gap-6 md:gap-8">
+          <Link href="/home" className="text-netflix-red text-xl sm:text-2xl md:text-3xl font-bold">
             CONEDOL
           </Link>
 
           {/* Nav Links - Desktop */}
-          <ul className="hidden md:flex items-center gap-6">
+          <ul className="hidden lg:flex items-center gap-4 xl:gap-6">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <Link
@@ -81,23 +81,23 @@ export function Navbar() {
         </div>
 
         {/* Right Side */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2 sm:gap-3 md:gap-4">
           {/* Language Toggle */}
           <button
             onClick={() => setLanguage(language === 'en' ? 'ne' : 'en')}
-            className="text-sm px-3 py-1 border border-white/50 rounded hover:border-white transition-colors"
+            className="text-xs sm:text-sm px-2 sm:px-3 py-1 border border-white/50 rounded hover:border-white transition-colors"
           >
             {language === 'en' ? 'नेपाली' : 'English'}
           </button>
 
           {/* Search */}
           <Link href="/search" className="hover:text-gray-300 transition-colors">
-            <FaSearch className="text-xl" />
+            <FaSearch className="text-base sm:text-lg md:text-xl" />
           </Link>
 
           {/* Notifications */}
-          <button className="hover:text-gray-300 transition-colors">
-            <FaBell className="text-xl" />
+          <button className="hover:text-gray-300 transition-colors hidden sm:block">
+            <FaBell className="text-lg md:text-xl" />
           </button>
 
           {/* Profile Menu / Auth Buttons */}
@@ -144,16 +144,16 @@ export function Navbar() {
               )}
             </div>
           ) : (
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1 sm:gap-2">
               <Link
                 href="/login"
-                className="px-4 py-2 text-sm hover:text-gray-300 transition-colors"
+                className="px-2 sm:px-4 py-1 sm:py-2 text-xs sm:text-sm hover:text-gray-300 transition-colors"
               >
                 Sign In
               </Link>
               <Link
                 href="/register"
-                className="px-4 py-2 text-sm bg-netflix-red hover:bg-red-700 rounded transition-colors"
+                className="px-2 sm:px-4 py-1 sm:py-2 text-xs sm:text-sm bg-netflix-red hover:bg-red-700 rounded transition-colors"
               >
                 Sign Up
               </Link>
@@ -163,13 +163,13 @@ export function Navbar() {
       </div>
 
       {/* Mobile Nav Links */}
-      <div className="md:hidden px-4 pb-2">
-        <ul className="flex items-center gap-4 overflow-x-auto scrollbar-hide">
+      <div className="lg:hidden px-3 sm:px-4 pb-2 overflow-x-auto">
+        <ul className="flex items-center gap-3 sm:gap-4 scrollbar-hide whitespace-nowrap">
           {navLinks.map((link) => (
             <li key={link.href} className="flex-shrink-0">
               <Link
                 href={link.href}
-                className={`text-xs hover:text-gray-300 transition-colors ${
+                className={`text-xs sm:text-sm hover:text-gray-300 transition-colors ${
                   pathname === link.href ? 'font-bold' : ''
                 }`}
               >

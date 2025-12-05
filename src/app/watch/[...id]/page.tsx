@@ -18,6 +18,8 @@ export default function WatchPage() {
   const [season, setSeason] = useState<number | undefined>();
   const [episode, setEpisode] = useState<number | undefined>();
   const [mediaDetails, setMediaDetails] = useState<any>(null);
+  const [showControls, setShowControls] = useState(false);
+  const [hideControlsTimeout, setHideControlsTimeout] = useState<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     // Parse params
@@ -89,6 +91,37 @@ export default function WatchPage() {
     }
   };
 
+  const handleMouseMove = () => {
+    setShowControls(true);
+    
+    // Clear existing timeout
+    if (hideControlsTimeout) {
+      clearTimeout(hideControlsTimeout);
+    }
+    
+    // Set new timeout to hide controls after 3 seconds
+    const timeout = setTimeout(() => {
+      setShowControls(false);
+    }, 3000);
+    
+    setHideControlsTimeout(timeout);
+  };
+
+  const handleMouseLeave = () => {
+    if (hideControlsTimeout) {
+      clearTimeout(hideControlsTimeout);
+    }
+    setShowControls(false);
+  };
+
+  useEffect(() => {
+    return () => {
+      if (hideControlsTimeout) {
+        clearTimeout(hideControlsTimeout);
+      }
+    };
+  }, [hideControlsTimeout]);
+
   if (!tmdbId) {
     return (
       <div className="min-h-screen bg-netflix-black flex items-center justify-center">
@@ -98,26 +131,37 @@ export default function WatchPage() {
   }
 
   return (
-    <div className="min-h-screen bg-netflix-black">
-      {/* Back Button */}
-      <div className="absolute top-4 left-4 z-50">
+    <div 
+      className="min-h-screen bg-netflix-black flex flex-col items-center justify-center"
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+    >
+      {/* Back Button - Shows on hover */}
+      <div 
+        className={`absolute top-4 left-4 z-50 transition-opacity duration-300 ${
+          showControls ? 'opacity-100' : 'opacity-0 pointer-events-none'
+        }`}
+      >
         <Button
           variant="secondary"
           size="sm"
           onClick={() => router.back()}
+          className="text-xs sm:text-sm"
         >
-          <FaArrowLeft />
-          Back
+          <FaArrowLeft className="text-xs sm:text-base" />
+          <span className="hidden sm:inline">Back</span>
         </Button>
       </div>
 
-      {/* Video Player */}
-      <VideoPlayer
-        tmdbId={tmdbId}
-        mediaType={mediaType}
-        season={season}
-        episode={episode}
-      />
+      {/* Video Player - Centered for mobile */}
+      <div className="w-full max-w-7xl mx-auto px-0 sm:px-4 md:px-6">
+        <VideoPlayer
+          tmdbId={tmdbId}
+          mediaType={mediaType}
+          season={season}
+          episode={episode}
+        />
+      </div>
     </div>
   );
 }

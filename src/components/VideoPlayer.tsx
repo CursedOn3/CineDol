@@ -79,9 +79,9 @@ export function VideoPlayer({
   const currentVideoUrl = providers[currentIndex]?.url;
 
   return (
-    <div className="relative w-full bg-black">
+    <div className="relative w-full bg-black mx-auto">
       {/* Video Container */}
-      <div className="video-container">
+      <div className="video-container mx-auto">
         {isLoading && (
           <div className="absolute inset-0 flex items-center justify-center bg-netflix-darkGray">
             <div className="text-center">
@@ -114,44 +114,46 @@ export function VideoPlayer({
         />
       </div>
 
-      {/* Provider Selector */}
-      <div className="absolute top-4 right-4 z-20">
-        <div className="relative">
-          <Button
-            variant="secondary"
-            size="sm"
-            onClick={() => setShowProviderMenu(!showProviderMenu)}
-          >
-            {providers[currentIndex]?.name}
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-            </svg>
-          </Button>
+      {/* Provider Selector - Hidden since only one provider */}
+      {providers.length > 1 && (
+        <div className="absolute top-4 right-4 z-20">
+          <div className="relative">
+            <Button
+              variant="secondary"
+              size="sm"
+              onClick={() => setShowProviderMenu(!showProviderMenu)}
+            >
+              {providers[currentIndex]?.name}
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+            </Button>
 
-          <AnimatePresence>
-            {showProviderMenu && (
-              <motion.div
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                className="absolute right-0 mt-2 w-48 bg-netflix-darkGray border border-netflix-gray rounded shadow-lg py-2"
-              >
-                {providers.map((provider, index) => (
-                  <button
-                    key={provider.provider}
-                    onClick={() => switchProvider(index)}
-                    className={`w-full text-left px-4 py-2 hover:bg-netflix-gray transition-colors ${
-                      index === currentIndex ? 'bg-netflix-gray' : ''
-                    }`}
-                  >
-                    {provider.name}
-                  </button>
-                ))}
-              </motion.div>
-            )}
-          </AnimatePresence>
+            <AnimatePresence>
+              {showProviderMenu && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  className="absolute right-0 mt-2 w-48 bg-netflix-darkGray border border-netflix-gray rounded shadow-lg py-2"
+                >
+                  {providers.map((provider, index) => (
+                    <button
+                      key={provider.provider}
+                      onClick={() => switchProvider(index)}
+                      className={`w-full text-left px-4 py-2 hover:bg-netflix-gray transition-colors ${
+                        index === currentIndex ? 'bg-netflix-gray' : ''
+                      }`}
+                    >
+                      {provider.name}
+                    </button>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

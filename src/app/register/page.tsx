@@ -63,18 +63,18 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 bg-gradient-to-b from-netflix-black to-netflix-darkGray">
+    <div className="min-h-screen flex items-center justify-center px-4 sm:px-6 py-8 bg-gradient-to-b from-netflix-black to-netflix-darkGray">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         className="w-full max-w-md"
       >
-        <div className="text-center mb-8">
-          <h1 className="text-netflix-red text-4xl font-bold mb-2">CONEDOL</h1>
-          <h2 className="text-3xl font-bold">{t('auth.signUp')}</h2>
+        <div className="text-center mb-6 sm:mb-8">
+          <h1 className="text-netflix-red text-3xl sm:text-4xl font-bold mb-2">CONEDOL</h1>
+          <h2 className="text-2xl sm:text-3xl font-bold">{t('auth.signUp')}</h2>
         </div>
 
-        <div className="bg-netflix-darkGray/80 p-8 rounded-lg">
+        <div className="bg-netflix-darkGray/80 p-6 sm:p-8 rounded-lg">
           <form onSubmit={handleSubmit} className="space-y-4">
             <Input
               type="text"
