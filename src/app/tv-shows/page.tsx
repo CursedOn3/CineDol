@@ -6,7 +6,7 @@ import { Footer } from '@/components/Footer';
 import { TMDBTVShow } from '@/types';
 
 export const metadata: Metadata = {
-  title: 'TV Shows - ConeDol',
+  title: 'TV Shows - CineDol',
   description: 'Browse all TV shows',
 };
 

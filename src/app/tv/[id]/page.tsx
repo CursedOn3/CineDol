@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: TVPageProps): Promise<Metadat
     const tv = await tmdbService.getTVDetails(parseInt(params.id));
     
     return {
-      title: `${tv.name} - ConeDol`,
+      title: `${tv.name} - CineDol`,
       description: tv.overview,
       openGraph: {
         title: tv.name,
@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: TVPageProps): Promise<Metadat
     };
   } catch {
     return {
-      title: 'TV Show Not Found - ConeDol',
+      title: 'TV Show Not Found - CineDol',
     };
   }
 }

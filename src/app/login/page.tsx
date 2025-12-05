@@ -55,7 +55,7 @@ export default function LoginPage() {
         className="w-full max-w-md"
       >
         <div className="text-center mb-6 sm:mb-8">
-          <h1 className="text-netflix-red text-3xl sm:text-4xl font-bold mb-2">CONEDOL</h1>
+          <h1 className="text-netflix-red text-3xl sm:text-4xl font-bold mb-2">CINEDOL</h1>
           <h2 className="text-2xl sm:text-3xl font-bold">{t('auth.signIn')}</h2>
         </div>
 

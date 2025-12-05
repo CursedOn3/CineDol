@@ -1,8 +1,8 @@
-# ConeDol - Complete Setup Guide
+# CineDol - Complete Setup Guide
 
 ## Quick Start
 
-Follow these steps to get the ConeDol streaming platform up and running on your local machine.
+Follow these steps to get the CineDol streaming platform up and running on your local machine.
 
 ## Step 1: Install Dependencies
 
@@ -36,10 +36,10 @@ cp .env.example .env
 DATABASE_URL="postgresql://USER:PASSWORD@HOST:PORT/DATABASE"
 
 # Example for local PostgreSQL:
-DATABASE_URL="postgresql://postgres:password@localhost:5432/conedol"
+DATABASE_URL="postgresql://postgres:password@localhost:5432/cinedol"
 
 # For MongoDB (alternative):
-# DATABASE_URL="mongodb+srv://username:password@cluster.mongodb.net/conedol"
+# DATABASE_URL="mongodb+srv://username:password@cluster.mongodb.net/cinedol"
 ```
 
 ### NextAuth Configuration
@@ -85,7 +85,7 @@ TMDB_API_READ_ACCESS_TOKEN="eyJhbGciOiJIUzI1NiJ9..."
 psql -U postgres
 
 # Create database
-CREATE DATABASE conedol;
+CREATE DATABASE cinedol;
 
 # Exit psql
 \q

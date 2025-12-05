@@ -47,10 +47,10 @@ async function main() {
   const hashedPassword = await bcrypt.hash('admin123', 10);
 
   const admin = await prisma.user.upsert({
-    where: { email: 'admin@conedol.com' },
+    where: { email: 'admin@cinedol.com' },
     update: {},
     create: {
-      email: 'admin@conedol.com',
+      email: 'admin@cinedol.com',
       name: 'Admin',
       password: hashedPassword,
       isAdmin: true,
@@ -81,7 +81,7 @@ npx tsx prisma/seed.ts
 ```
 
 Admin credentials:
-- Email: admin@conedol.com
+- Email: admin@cinedol.com
 - Password: admin123
 
 ## Quick Commands Reference

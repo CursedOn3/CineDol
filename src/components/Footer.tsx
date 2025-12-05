@@ -85,7 +85,7 @@ export function Footer() {
 
         {/* Copyright */}
         <div className="text-center text-xs sm:text-sm text-gray-500">
-          <p>&copy; {new Date().getFullYear()} ConeDol. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} CineDol. All rights reserved.</p>
           <p className="mt-1 sm:mt-2">
             Data provided by <a href="https://www.themoviedb.org" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300">TMDB</a>
           </p>

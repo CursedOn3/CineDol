@@ -1,8 +1,8 @@
-# ConeDol - Project Summary
+# CineDol - Project Summary
 
 ## 🎯 Project Overview
 
-ConeDol is a complete, production-ready Netflix-style streaming platform built with cutting-edge web technologies. The platform provides a seamless movie and TV show streaming experience with multi-provider video support, user authentication, profiles, watchlists, and much more.
+CineDol is a complete, production-ready Netflix-style streaming platform built with cutting-edge web technologies. The platform provides a seamless movie and TV show streaming experience with multi-provider video support, user authentication, profiles, watchlists, and much more.
 
 ## ✨ Key Features Implemented
 
@@ -119,7 +119,7 @@ CustomContent (admin-added content)
 ## 📁 Project Structure
 
 ```
-ConeDol/
+CineDol/
 ├── src/
 │   ├── app/                      # Next.js App Router
 │   │   ├── api/                  # API routes
@@ -309,7 +309,7 @@ MIT License - Free to use and modify
 
 ## 🎉 Conclusion
 
-ConeDol is a complete, production-ready streaming platform that showcases modern web development practices. It includes everything needed to launch a streaming service, from user authentication to video playback, with a beautiful Netflix-inspired UI.
+CineDol is a complete, production-ready streaming platform that showcases modern web development practices. It includes everything needed to launch a streaming service, from user authentication to video playback, with a beautiful Netflix-inspired UI.
 
 The project is built with scalability, performance, and user experience in mind, making it an excellent foundation for a real-world streaming platform.
 

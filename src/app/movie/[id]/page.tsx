@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: MoviePageProps): Promise<Meta
     const movie = await tmdbService.getMovieDetails(parseInt(params.id));
     
     return {
-      title: `${movie.title} - ConeDol`,
+      title: `${movie.title} - CineDol`,
       description: movie.overview,
       openGraph: {
         title: movie.title,
@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: MoviePageProps): Promise<Meta
     };
   } catch {
     return {
-      title: 'Movie Not Found - ConeDol',
+      title: 'Movie Not Found - CineDol',
     };
   }
 }

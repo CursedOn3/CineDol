@@ -6,21 +6,21 @@ import { Providers } from './providers';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'ConeDol - Stream Movies & TV Shows',
+  title: 'CineDol - Stream Movies & TV Shows',
   description: 'Watch unlimited movies and TV shows online. Stream the latest releases and classics.',
   keywords: ['streaming', 'movies', 'tv shows', 'entertainment', 'watch online'],
-  authors: [{ name: 'ConeDol' }],
+  authors: [{ name: 'CineDol' }],
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://conedol.com',
-    siteName: 'ConeDol',
-    title: 'ConeDol - Stream Movies & TV Shows',
+    url: 'https://cinedol.com',
+    siteName: 'CineDol',
+    title: 'CineDol - Stream Movies & TV Shows',
     description: 'Watch unlimited movies and TV shows online.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'ConeDol - Stream Movies & TV Shows',
+    title: 'CineDol - Stream Movies & TV Shows',
     description: 'Watch unlimited movies and TV shows online.',
   },
 };
