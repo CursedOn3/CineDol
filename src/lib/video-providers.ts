@@ -4,12 +4,12 @@ import type { VideoProvider, VideoProviderConfig } from '@/types';
 export const videoProviders: Record<VideoProvider, VideoProviderConfig> = {
   moviesapi: {
     name: 'MoviesAPI',
-    baseUrl: 'https://w1.moviesapi.to',
+    baseUrl: 'https://moviesapi.club',
     buildUrl: (tmdbId, mediaType, season, episode) => {
       if (mediaType === 'tv' && season && episode) {
-        return `https://w1.moviesapi.to/embed/tv/${tmdbId}/${season}-${episode}`;
+        return `https://moviesapi.club/tv/${tmdbId}/${season}/${episode}`;
       }
-      return `https://w1.moviesapi.to/embed/movie/${tmdbId}`;
+      return `https://moviesapi.club/movie/${tmdbId}`;
     },
   },
 };
