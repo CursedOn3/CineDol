@@ -241,4 +241,7 @@ export const tmdbService = {
   clearCache(): void {
     cache.clear();
   },
+
+  // Generic fetch function for custom queries
+  fetchFromTMDB,
 };

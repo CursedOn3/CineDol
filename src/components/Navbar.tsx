@@ -32,6 +32,11 @@ export function Navbar() {
     { href: '/home', label: t('nav.home') },
     { href: '/movies', label: t('nav.movies') },
     { href: '/tv-shows', label: t('nav.tvShows') },
+    { href: '/k-drama', label: t('nav.kDrama') },
+    { href: '/c-drama', label: t('nav.cDrama') },
+    { href: '/anime', label: t('nav.anime') },
+    { href: '/kids', label: t('nav.kids') },
+    { href: '/adult', label: t('nav.adult') },
     ...(session ? [
       { href: '/watchlist', label: t('nav.myList') },
       { href: '/continue-watching', label: t('nav.continueWatching') },
@@ -40,9 +45,8 @@ export function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-netflix-black' : 'bg-gradient-to-b from-black/80 to-transparent'
-      }`}
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-netflix-black' : 'bg-gradient-to-b from-black/80 to-transparent'
+        }`}
     >
       <div className="px-3 sm:px-4 md:px-8 py-3 md:py-4 flex items-center justify-between">
         {/* Logo */}
@@ -57,9 +61,8 @@ export function Navbar() {
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className={`text-sm hover:text-gray-300 transition-colors ${
-                    pathname === link.href ? 'font-bold' : ''
-                  }`}
+                  className={`text-sm hover:text-gray-300 transition-colors ${pathname === link.href ? 'font-bold' : ''
+                    }`}
                 >
                   {link.label}
                 </Link>
@@ -69,9 +72,8 @@ export function Navbar() {
               <li>
                 <Link
                   href="/admin"
-                  className={`text-sm hover:text-gray-300 transition-colors ${
-                    pathname.startsWith('/admin') ? 'font-bold' : ''
-                  }`}
+                  className={`text-sm hover:text-gray-300 transition-colors ${pathname.startsWith('/admin') ? 'font-bold' : ''
+                    }`}
                 >
                   {t('nav.admin')}
                 </Link>
@@ -169,9 +171,8 @@ export function Navbar() {
             <li key={link.href} className="flex-shrink-0">
               <Link
                 href={link.href}
-                className={`text-xs sm:text-sm hover:text-gray-300 transition-colors ${
-                  pathname === link.href ? 'font-bold' : ''
-                }`}
+                className={`text-xs sm:text-sm hover:text-gray-300 transition-colors ${pathname === link.href ? 'font-bold' : ''
+                  }`}
               >
                 {link.label}
               </Link>
