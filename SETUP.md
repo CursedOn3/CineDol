@@ -64,10 +64,10 @@ GOOGLE_CLIENT_SECRET="your-google-client-secret"
 ```
 
 ### TMDB API (Already Configured)
-The TMDB credentials are already provided in the prompt:
+Get your TMDB credentials from https://www.themoviedb.org/settings/api and set them as environment variables:
 ```env
-TMDB_API_KEY="2031e307a67da00280bcbb7659383f5d"
-TMDB_API_READ_ACCESS_TOKEN="eyJhbGciOiJIUzI1NiJ9..."
+TMDB_API_KEY="your-tmdb-api-key"
+TMDB_API_READ_ACCESS_TOKEN="your-tmdb-read-access-token"
 ```
 
 ## Step 3: Set Up the Database
