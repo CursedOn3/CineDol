@@ -54,9 +54,7 @@ export default function WatchPage() {
 
   const fetchMediaDetails = async () => {
     try {
-      const endpoint = mediaType === 'movie' 
-        ? `https://api.themoviedb.org/3/movie/${tmdbId}?api_key=2031e307a67da00280bcbb7659383f5d`
-        : `https://api.themoviedb.org/3/tv/${tmdbId}?api_key=2031e307a67da00280bcbb7659383f5d`;
+      const endpoint = `/api/media/${mediaType}/${tmdbId}`;
       
       const response = await fetch(endpoint);
       if (response.ok) {
